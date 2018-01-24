@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import { incrementAction, decrementAction } from "./modules/tasks";
+import { increment, decrement } from "./modules/tasks";
 
 class App extends Component {
   constructor(props){
@@ -10,10 +10,10 @@ class App extends Component {
     this.decrement = this.decrement.bind(this);
   }
   increment = () => {
-    this.props.dispatch(incrementAction());
+    this.props.dispatch(increment());
   }
   decrement = () => {
-    this.props.dispatch(decrementAction());
+    this.props.dispatch(decrement());
   }
   render() {
     return (
