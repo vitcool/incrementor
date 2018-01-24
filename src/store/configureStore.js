@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import tasks from "../modules/tasks";
 import createSagaMiddleware from "redux-saga";
-import helloSaga from "../sagas/saga";
+import watchFetchRequests from "../sagas/saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -15,7 +15,7 @@ const configureStore = initialState => {
     initialState,
     applyMiddleware(sagaMiddleware)
   );
-  sagaMiddleware.run(helloSaga);
+  sagaMiddleware.run(watchFetchRequests);
   return store;
 };
 

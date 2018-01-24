@@ -5,9 +5,10 @@ const initialState = {
 };
 
 //actions
-export const { increment, decrement } = createActions(
+export const { increment, decrement, incrementSuccess } = createActions(
   "INCREMENT",
-  "DECREMENT"
+  "DECREMENT",
+  "INCREMENT_SUCCESS"
 );
 
 //reducer
@@ -18,6 +19,10 @@ const reducer = handleActions(
     },
     [decrement](state) {
       return { number: state.number - 1 };
+    },
+    [incrementSuccess](state, data) {
+      debugger;
+      return { number: state.number + 1 };
     }
   },
   initialState
