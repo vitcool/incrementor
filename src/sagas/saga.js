@@ -1,6 +1,6 @@
 import { take, fork, call, put } from "redux-saga/effects";
 
-const url = 'https://jsonplaceholder.typicode.com/users';
+const url = "https://jsonplaceholder.typicode.com/users";
 
 // The watcher: watch actions and coordinate worker tasks
 export default function* watchFetchRequests() {
@@ -14,10 +14,16 @@ export default function* watchFetchRequests() {
 
 // The worker: perform the requested task
 function* fetchUrl(url) {
-    const data = yield call(fetch, url);
-  
-    yield put({
-      type: 'INCREMENT_SUCCESS',
-      data
-    });
-  }
+  const response = yield call(testReq, url);
+  yield put({
+    type: "INCREMENT_SUCCESS",
+    response
+  });
+}
+
+const testReq = url => {
+  return fetch(url)
+    .then(response => response.json())
+    .catch(error => error)
+    .then(data => data);
+};
